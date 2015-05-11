@@ -9,6 +9,9 @@
 #import "AppDelegate.h"
 #import "ViewController.h"
 
+#import <Parse/Parse.h>
+#import "Constants.h"
+
 @interface AppDelegate ()
 
 @property (nonatomic) ViewController *viewController;
@@ -21,6 +24,14 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    // initialize Parse
+    [Parse setApplicationId:PARSE_APP_ID clientKey:PARSE_CLIENT_KEY];
+    
+    // optional analytics
+    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+    
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.viewController = [[ViewController alloc] initWithNibName:nil bundle:nil];
     self.naviController = [[UINavigationController alloc] initWithRootViewController:self.viewController];

@@ -8,6 +8,8 @@
 
 #import "ViewController.h"
 
+#import <Parse/Parse.h>
+
 @interface ViewController ()
 
 @end
@@ -17,6 +19,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    PFObject *theObject =[PFObject objectWithClassName:@"SumpinSpecial"];
+    theObject[@"this"] = @"is nice";
+    [theObject saveInBackground];
 }
 
 - (void)didReceiveMemoryWarning {
